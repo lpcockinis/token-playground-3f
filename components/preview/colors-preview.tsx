@@ -1,6 +1,7 @@
 'use client'
 
 import { useTokens } from '@/components/tokens-provider'
+import { ContrastChecker } from '@/components/preview/contrast-checker'
 import { getPalette, readableTextOn, type Shade } from '@/lib/tokens'
 
 function Swatch({ role, shade }: { role: string; shade: Shade }) {
@@ -44,6 +45,7 @@ export function ColorsPreview() {
           </ul>
         </section>
       ))}
+      <ContrastChecker palette={palette} />
     </div>
   )
 }

@@ -178,6 +178,14 @@ export function relativeLuminance(hex: string) {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b
 }
 
+export function contrastRatio(foreground: string, background: string) {
+  const a = relativeLuminance(foreground)
+  const b = relativeLuminance(background)
+  return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05)
+}
+
+export const WCAG_THRESHOLDS = { AA: 4.5, AAA: 7 } as const
+
 export function readableTextOn(hex: string) {
   return relativeLuminance(hex) > 0.36 ? '#18181B' : '#FFFFFF'
 }
